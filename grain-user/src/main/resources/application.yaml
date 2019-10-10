@@ -6,4 +6,4 @@ spring:
     password: root
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.atguigu.grain.user.bean
+  type-aliases-package: com.grain.bean
