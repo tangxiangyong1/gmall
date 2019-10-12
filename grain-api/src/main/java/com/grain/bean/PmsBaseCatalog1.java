@@ -2,11 +2,9 @@ package com.grain.bean;
 
 /*import com.atguigu.gmall.bean.BaseCatalog2;*/
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @param
@@ -20,8 +18,16 @@ public class PmsBaseCatalog1 implements Serializable {
     @Column
     private String name;
 
-   /* @Transient
-    private List<BaseCatalog2> catalog2s;*/
+    public List<PmsBaseCatalog2> getCatalog2s() {
+        return catalog2s;
+    }
+
+    public void setCatalog2s(List<PmsBaseCatalog2> catalog2s) {
+        this.catalog2s = catalog2s;
+    }
+
+    @Transient
+    private List<PmsBaseCatalog2> catalog2s;
 
     public String getId() {
         return id;
