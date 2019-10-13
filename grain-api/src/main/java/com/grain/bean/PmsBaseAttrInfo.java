@@ -1,12 +1,9 @@
 package com.grain.bean;
 
 
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @param
@@ -18,14 +15,23 @@ public class PmsBaseAttrInfo implements Serializable {
     @Id
     @Column
     private String id;
+
+    public List<PmsBaseAttrInfo> getAttrValueList() {
+        return attrValueList;
+    }
+
+    public void setAttrValueList(List<PmsBaseAttrInfo> attrValueList) {
+        this.attrValueList = attrValueList;
+    }
+
     @Column
     private String attrName;
     @Column
     private String catalog3Id;
     @Column
     private String isEnabled;
-  /*  @Transient
-    List<BaseAttrValue> attrValueList;*/
+   @Transient
+   List<PmsBaseAttrInfo> attrValueList;
 
     public String getId() {
         return id;
