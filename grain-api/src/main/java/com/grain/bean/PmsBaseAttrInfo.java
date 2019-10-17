@@ -1,6 +1,5 @@
 package com.grain.bean;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -15,26 +14,14 @@ public class PmsBaseAttrInfo implements Serializable {
     @Id
     @Column
     private String id;
-
-
-
     @Column
     private String attrName;
     @Column
     private String catalog3Id;
     @Column
     private String isEnabled;
-
-    public List<PmsBaseAttrValue> getAttrValueList() {
-        return attrValueList;
-    }
-
-    public void setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
-        this.attrValueList = attrValueList;
-    }
-
     @Transient
-   List<PmsBaseAttrValue> attrValueList;
+    List<PmsBaseAttrValue> attrValueList;
 
     public String getId() {
         return id;
@@ -68,11 +55,11 @@ public class PmsBaseAttrInfo implements Serializable {
         this.isEnabled = isEnabled;
     }
 
-  /*  public List<BaseAttrValue> getAttrValueList() {
+    public List<PmsBaseAttrValue> getAttrValueList() {
         return attrValueList;
-    }*/
+    }
 
-    /*public void setAttrValueList(List<BaseAttrValue> attrValueList) {
+    public void setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
         this.attrValueList = attrValueList;
-    }*/
+    }
 }
