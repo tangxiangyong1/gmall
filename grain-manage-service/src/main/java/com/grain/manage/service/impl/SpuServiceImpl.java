@@ -5,36 +5,44 @@ import com.grain.bean.PmsProductImage;
 import com.grain.bean.PmsProductInfo;
 import com.grain.bean.PmsProductSaleAttr;
 import com.grain.bean.PmsProductSaleAttrValue;
+import com.grain.manage.mapper.PmsProductImageMapper;
 import com.grain.manage.mapper.PmsProductInfoMapper;
 import com.grain.manage.mapper.PmsProductSaleAttrMapper;
 import com.grain.manage.mapper.PmsProductSaleAttrValueMapper;
-import com.grain.manage.mapper.pmsProductImageMapper;
-import com.grain.service.SupService;
+import com.grain.service.SpuService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @Service
-public class SupServiceImpl implements SupService {
+public class SpuServiceImpl implements SpuService {
 
     @Autowired
     PmsProductInfoMapper pmsProductInfoMapper;
 
     @Autowired
-    pmsProductImageMapper pmsProductImageMapper;
-@Autowired
-PmsProductSaleAttrMapper pmsProductSaleAttrMapper;
-@Autowired
+    PmsProductImageMapper pmsProductImageMapper;
+
+    @Autowired
+    PmsProductSaleAttrMapper pmsProductSaleAttrMapper;
+
+    @Autowired
     PmsProductSaleAttrValueMapper pmsProductSaleAttrValueMapper;
+
     @Override
     public List<PmsProductInfo> spuList(String catalog3Id) {
-        PmsProductInfo PmsProductInfo=new PmsProductInfo();
-        PmsProductInfo.setCatalog3Id(catalog3Id);
-        return (List<PmsProductInfo>) pmsProductInfoMapper.select(PmsProductInfo);
+
+
+        PmsProductInfo pmsProductInfo = new PmsProductInfo();
+        pmsProductInfo.setCatalog3Id(catalog3Id);
+        List<PmsProductInfo> pmsProductInfos = pmsProductInfoMapper.select(pmsProductInfo);
+
+        return pmsProductInfos;
     }
 
     @Override
     public void saveSpuInfo(PmsProductInfo pmsProductInfo) {
+
         // 保存商品信息
         pmsProductInfoMapper.insertSelective(pmsProductInfo);
 
@@ -61,10 +69,12 @@ PmsProductSaleAttrMapper pmsProductSaleAttrMapper;
                 pmsProductSaleAttrValueMapper.insertSelective(pmsProductSaleAttrValue);
             }
         }
+
     }
 
     @Override
     public List<PmsProductSaleAttr> spuSaleAttrList(String spuId) {
+
         PmsProductSaleAttr pmsProductSaleAttr = new PmsProductSaleAttr();
         pmsProductSaleAttr.setProductId(spuId);
         List<PmsProductSaleAttr> PmsProductSaleAttrs = pmsProductSaleAttrMapper.select(pmsProductSaleAttr);
@@ -82,10 +92,12 @@ PmsProductSaleAttrMapper pmsProductSaleAttrMapper;
 
     @Override
     public List<PmsProductImage> spuImageList(String spuId) {
+
         PmsProductImage pmsProductImage = new PmsProductImage();
         pmsProductImage.setProductId(spuId);
         List<PmsProductImage> pmsProductImages = pmsProductImageMapper.select(pmsProductImage);
 
         return pmsProductImages;
+
     }
 }

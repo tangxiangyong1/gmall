@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.grain.bean.PmsBaseCatalog1;
 import com.grain.bean.PmsBaseCatalog2;
 import com.grain.bean.PmsBaseCatalog3;
-import com.grain.service.CatelogService;
+import com.grain.service.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,30 +16,31 @@ import java.util.List;
 @CrossOrigin
 public class CatalogController {
 
-
-
     @Reference
-    CatelogService catelogService;
+    CatalogService catalogService;
 
-    @RequestMapping("getCatalog1")
+    @RequestMapping("getCatalog3")
     @ResponseBody
-    public List<PmsBaseCatalog1> getcatelog1(){
-        List<PmsBaseCatalog1> pmsBaseCatalog1s = catelogService.getcatelog1();
-        return pmsBaseCatalog1s;
+    public List<PmsBaseCatalog3> getCatalog3(String catalog2Id){
+
+        List<PmsBaseCatalog3> catalog3s = catalogService.getCatalog3(catalog2Id);
+        return catalog3s;
     }
+
 
     @RequestMapping("getCatalog2")
     @ResponseBody
     public List<PmsBaseCatalog2> getCatalog2(String catalog1Id){
-        List<PmsBaseCatalog2> pmsBaseCatalog2s = catelogService.getCatalog2(catalog1Id);
-        return pmsBaseCatalog2s;
+
+        List<PmsBaseCatalog2> catalog2s = catalogService.getCatalog2(catalog1Id);
+        return catalog2s;
     }
-    @RequestMapping("getCatalog3")
+
+    @RequestMapping("getCatalog1")
     @ResponseBody
-    public List<PmsBaseCatalog3> getCatalog3(String catalog2Id){
-        List<PmsBaseCatalog3> pmsBaseCatalog3s = catelogService.getCatalog3(catalog2Id);
-        return pmsBaseCatalog3s;
+    public List<PmsBaseCatalog1> getCatalog1(){
+
+        List<PmsBaseCatalog1> catalog1s = catalogService.getCatalog1();
+        return catalog1s;
     }
-
-
 }

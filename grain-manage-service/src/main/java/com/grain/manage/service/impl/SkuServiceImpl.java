@@ -34,7 +34,7 @@ public class SkuServiceImpl implements SkuService {
     public void saveSkuInfo(PmsSkuInfo pmsSkuInfo) {
 
         // 插入skuInfo
-        int i = (int) pmsSkuInfoMapper.insertSelective(pmsSkuInfo);
+        int i = pmsSkuInfoMapper.insertSelective(pmsSkuInfo);
         String skuId = pmsSkuInfo.getId();
 
         // 插入平台属性关联

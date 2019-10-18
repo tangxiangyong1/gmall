@@ -15,7 +15,7 @@ public class UserController {
 
     @RequestMapping("getallUser")
     public List<UmsMember> getallUser(){
-        List<UmsMember> userBeans = userService.getallUser();
+        List<UmsMember> userBeans = userService.getAllUser();
 return  userBeans;
     }
 }

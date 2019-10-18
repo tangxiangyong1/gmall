@@ -7,10 +7,12 @@ import com.grain.bean.PmsBaseSaleAttr;
 
 import java.util.List;
 
-public interface AttrService {
-public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id);
 
-    String  saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo);
+public interface AttrService {
+
+    List<PmsBaseAttrInfo> attrInfoList(String catalog3Id);
+
+    String saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo);
 
     List<PmsBaseAttrValue> getAttrValueList(String attrId);
 
